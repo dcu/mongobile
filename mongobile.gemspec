@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mongobile}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David A. Cuadrado"]
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/mongobile/views/database/show.haml",
     "lib/mongobile/views/index.haml",
     "lib/mongobile/views/layout.haml",
+    "mongobile.gemspec",
     "public/javascripts/jquery.mobile-1.0a3pre.min.js",
     "public/stylesheets/images/ajax-loader.png",
     "public/stylesheets/images/form-check-off.png",
