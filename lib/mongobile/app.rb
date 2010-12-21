@@ -55,6 +55,18 @@ module Mongobile
       redirect "/database/#{params[:id]}"
     end
 
+    def humanize(v)
+      if v.kind_of?(Hash)
+        v.inspect
+      elsif v.kind_of?(Array)
+        v.inspect
+      elsif v.kind_of?(Time)
+        v.strftime("%d %B %Y %H:%M:%S")
+      else
+        v
+      end
+    end
+
     private
     def error_not_found
       status 404

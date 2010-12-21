@@ -18,7 +18,7 @@
       -normalize_stats(@collection.stats).each do |k,v|
         %b
           &="#{k}="
-        &=v
+        &=humanize v
         %br
     %h1
       Documents
@@ -30,7 +30,7 @@
         -document.each do |k,v|
           %b
             &="#{k}="
-          &= v
+          &=humanize v
           %br
 
   %div(data-role="footer")

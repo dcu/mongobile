@@ -15,7 +15,7 @@
     -normalize_stats(@database.stats).each do |k,v|
       %b
         &="#{k}="
-      &=v
+      &=humanize v
       %br
 
     %h1
