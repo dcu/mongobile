@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     bson (1.1.5)
+    configuration (1.2.0)
     diff-lcs (1.1.2)
     git (1.2.5)
     haml (3.0.25)
@@ -9,6 +10,9 @@ GEM
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     mongo (1.1.5)
       bson (>= 1.1.5)
     rack (1.2.1)
@@ -36,6 +40,7 @@ DEPENDENCIES
   bundler (~> 1.0.0)
   haml
   jeweler (~> 1.5.2)
+  launchy (~> 0.3.7)
   mongo (~> 1.1.4)
   rcov
   rspec (~> 2.3.0)

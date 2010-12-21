@@ -4,6 +4,7 @@ gem 'sinatra', '~> 1.1.0'
 gem 'bson', '~> 1.1.4'
 gem 'mongo', '~> 1.1.4'
 gem 'haml'
+gem 'launchy', '~> 0.3.7'
 
 group :development do
   gem "rspec", "~> 2.3.0"

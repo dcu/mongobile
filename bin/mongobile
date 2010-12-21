@@ -2,9 +2,16 @@
 
 $:.unshift << File.expand_path("../../lib", __FILE__)
 require 'mongobile'
+require 'launchy'
+
+Thread.start do
+  sleep 2.5
+  Launchy.open("http://localhost:7534")
+end
 
 Rack::Server.new(:Port => "7534",
                  :config => File.dirname(__FILE__)+"/../config.ru",
                  :AccessLog => [],
                  :pid => nil,
                  :Host => "0.0.0.0").start
+
