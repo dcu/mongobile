@@ -41,6 +41,10 @@ module Mongobile
       collection.find({}, query_options)
     end
 
+    def file_size(database)
+      "%0.2f MB" % (database.stats["fileSize"] / 1024**2)
+    end
+
     def normalize_stats(stats)
       r={}
       stats.each do |k,v|

@@ -3,6 +3,12 @@
     %h1
       Database:
       &=@database.name
+    %div{:"data-role" => "navbar"}
+      %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}
+        %form(action="/database/#{@database.name}" method="delete" style="display: inline")
+          %input(type="submit" data-role="button" value="Drop Database" data-theme="a")
+        %form(action="/database/#{@database.name}/repair" method="post"  style="display: inline")
+          %input(type="submit" data-role="button" value="Repair Database" data-theme="a")
   %div(data-role="content")
     %h1
       Info

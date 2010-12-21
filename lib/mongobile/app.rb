@@ -36,23 +36,23 @@ module Mongobile
     end
 
     delete "/database/:id/:collection/" do
-      db.drop_collection(col.name)
-      ok
+      db(params[:id]).drop_collection(col.name)
+      redirect "/database/#{params[:id]}"
     end
 
-    get "/:database/:collection/" do
-      {
-        "db_name" => [db.name, col.name].join("/"),
-        "doc_count" => col.count,
-        "disk_size" => 123
-      }.to_json
+    delete "/database/:id" do
+      connection.drop_database(params[:id])
+      redirect "/"
     end
 
-    post "/database/:id/:collection/repair" do
+    post "/database/:id/repair" do
+      @database = db(params[:id])
       Thread.start do
-        db.command({:repairDatabase => 1})
+        @database.command({:repairDatabase => 1})
+        $stderr.puts "FINISHED!!!"
+        puts "FINISHED!!!"
       end
-      status 202
+      redirect "/database/#{params[:id]}"
     end
 
     private
