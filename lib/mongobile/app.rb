@@ -35,8 +35,10 @@ module Mongobile
       status 201
     end
 
-    delete "/database/:id/:collection/" do
-      db(params[:id]).drop_collection(col.name)
+    post "/database/:id/:collection/delete" do
+      @database = db(params[:id])
+      @database.drop_collection(params[:collection])
+
       redirect "/database/#{params[:id]}"
     end
 

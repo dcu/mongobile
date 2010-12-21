@@ -2,11 +2,9 @@
   %div(data-role="header")
     %h1
       Databases
-    %a(href="/" data-role="button" data-transition="slideup" class="ui-btn-right")
-      Create Database
   %div(data-role="content")
     %ul(data-role="listview" data-filter="true")
-      -@databases.each do |database, _|
+      -@databases.each do |database|
         %li
           %a(href="/database/#{database}")
             &=database

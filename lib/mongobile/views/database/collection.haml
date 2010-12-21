@@ -5,6 +5,12 @@
     %h1
       Collection:
       &=@database.name+" / #{@collection.name}"
+    %div{:"data-role" => "navbar"}
+      %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}
+        %form(action="/database/#{@database.name}/#{@collection.name}/delete" method="post" style="display: inline")
+          %input(type="submit" data-role="button" value="Drop Collection" data-theme="a")
+
+
   %div(data-role="content")
     -if skip == 0
       %h1
@@ -20,7 +26,7 @@
       -count+=1
       %div(data-role="collapsible" data-collapsed=true)
         %h1
-          &= document["_id"] +" "+ (document["name"] || document["title"] || document["description"] || "")
+          &= document["_id"] +" "+ (document["name"] || document["title"] || document["description"] || document["message"] || "")
         -document.each do |k,v|
           %b
             &="#{k}="
