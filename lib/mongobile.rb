@@ -2,6 +2,7 @@ require 'bundler/setup'
 
 require 'sinatra'
 require 'haml'
+require 'bson'
 require 'mongo'
 
 require 'net/http'

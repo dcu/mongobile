@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem 'sinatra', '~> 1.1.0'
+gem 'bson', '~> 1.1.4'
 gem 'mongo', '~> 1.1.4'
 gem 'haml'
 
