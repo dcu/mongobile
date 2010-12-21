@@ -40,7 +40,7 @@ module Mongobile
       redirect "/database/#{params[:id]}"
     end
 
-    delete "/database/:id" do
+    post "/database/:id/delete" do
       connection.drop_database(params[:id])
       redirect "/"
     end
@@ -49,8 +49,6 @@ module Mongobile
       @database = db(params[:id])
       Thread.start do
         @database.command({:repairDatabase => 1})
-        $stderr.puts "FINISHED!!!"
-        puts "FINISHED!!!"
       end
       redirect "/database/#{params[:id]}"
     end
