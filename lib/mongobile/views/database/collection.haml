@@ -4,15 +4,15 @@
   %div(data-role="header")
     %h1
       Collection:
-      =@database.name+" / #{@collection.name}"
+      &=@database.name+" / #{@collection.name}"
   %div(data-role="content")
     -if skip == 0
       %h1
         Info
       -normalize_stats(@collection.stats).each do |k,v|
         %b
-          ="#{k}="
-        =v
+          &="#{k}="
+        &=v
         %br
     %h1
       Documents
@@ -20,11 +20,11 @@
       -count+=1
       %div(data-role="collapsible" data-collapsed=true)
         %h1
-          =document["_id"] +" "+ (document["name"] || document["title"] || document["description"] || "")
+          &= document["_id"] +" "+ (document["name"] || document["title"] || document["description"] || "")
         -document.each do |k,v|
           %b
-            ="#{k}="
-          =v
+            &="#{k}="
+          &= v
           %br
 
   %div(data-role="footer")

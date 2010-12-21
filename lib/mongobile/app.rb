@@ -1,6 +1,12 @@
 module Mongobile
   class App < Sinatra::Base
     include Mongobile::MongoHelper
+
+    helpers do
+      include Rack::Utils
+      alias_method :h, :escape_html
+    end
+
     set :public, File.expand_path("../../../public", __FILE__)
     set :views, File.expand_path("../../../lib/mongobile/views", __FILE__)
 
