@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mongobile}
-  s.version = "0.0.5"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David A. Cuadrado"]
@@ -72,6 +72,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<bson>, ["~> 1.1.4"])
       s.add_runtime_dependency(%q<mongo>, ["~> 1.1.4"])
       s.add_runtime_dependency(%q<haml>, [">= 0"])
+      s.add_runtime_dependency(%q<launchy>, ["~> 0.3.7"])
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
@@ -82,6 +83,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bson>, ["~> 1.1.4"])
       s.add_dependency(%q<mongo>, ["~> 1.1.4"])
       s.add_dependency(%q<haml>, [">= 0"])
+      s.add_dependency(%q<launchy>, ["~> 0.3.7"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
@@ -93,6 +95,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bson>, ["~> 1.1.4"])
     s.add_dependency(%q<mongo>, ["~> 1.1.4"])
     s.add_dependency(%q<haml>, [">= 0"])
+    s.add_dependency(%q<launchy>, ["~> 0.3.7"])
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
