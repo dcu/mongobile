@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+$:.unshift << File.expand_path("../../lib", __FILE__)
+require 'mongobile'
+
+Rack::Server.new(:Port => "7534",
+                 :config => File.dirname(__FILE__)+"/../config.ru",
+                 :AccessLog => [],
+                 :pid => nil,
+                 :Host => "0.0.0.0").start

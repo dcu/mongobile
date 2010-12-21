@@ -1,0 +1,23 @@
+%div(data-role="page")
+  %div(data-role="header")
+    %h1
+      Database:
+      =@database.name
+  %div(data-role="content")
+    %h1
+      Info
+    -normalize_stats(@database.stats).each do |k,v|
+      %b
+        ="#{k}="
+      =v
+      %br
+
+    %h1
+      Collections
+    %ul(data-role="listview" data-filter="true")
+      -@collections.each do |collection|
+        %li
+          %a(href="/database/#{@database.name}/#{collection.name}")
+            =collection.name
+
+  %div(data-role="footer")
