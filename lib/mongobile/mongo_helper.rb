@@ -69,33 +69,47 @@ module Mongobile
     end
 
     def ops_per_second
-      counters = []
-      time_list = []
-      delays = []
-
-      4.times do
-        delays << Benchmark.realtime do
-          counters << server_status["opcounters"]
-        end
-        time_list << Time.now
-
-        sleep 1
+      c1 = c2 = nil
+      delay = Benchmark.realtime do
+        c1 = server_status["opcounters"]
       end
+      t1 = Time.now
+
+      sleep 1
+      delay += Benchmark.realtime do
+        c2 = server_status["opcounters"]
+      end
+      t2 = Time.now
 
       ops_average = {"query" => 0, "insert" => 0, "command" => 0, "update" => 0, "getmore" => 0, "delete" => 0}
-      time_average = 0
-      1.upto(counters.size-1) do |index|
-        ops_average.keys.each do |k|
-          ops_average[k] += (counters[index][k] - counters[index-1][k])
-        end
-        time_average += (time_list[index] - time_list[index-1]) - delays[index]
+      ops_average.keys.each do |k|
+        ops_average[k] = ((c2[k] - c1[k])/(t2-t1-delay)).round
       end
 
-      time_average /= counters.size
 
-      ops_average.each do |k,v|
-        ops_average[k] = ((ops_average[k] / counters.size)/time_average).round
-      end
+#       4.times do
+#         delays << Benchmark.realtime do
+#           counters << server_status["opcounters"]
+#         end
+#         time_list << Time.now
+#
+#         sleep 1
+#       end
+#
+#       ops_average = {"query" => 0, "insert" => 0, "command" => 0, "update" => 0, "getmore" => 0, "delete" => 0}
+#       time_average = 0
+#       1.upto(counters.size-1) do |index|
+#         ops_average.keys.each do |k|
+#           ops_average[k] += (counters[index][k] - counters[index-1][k])
+#         end
+#         time_average += (time_list[index] - time_list[index-1]) - delays[index]
+#       end
+#
+#       time_average /= counters.size
+#
+#       ops_average.each do |k,v|
+#         ops_average[k] = ((ops_average[k] / counters.size)/time_average).round
+#       end
 
       ops_average
     end

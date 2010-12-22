@@ -1,9 +1,13 @@
 $(document).ready(function() {
-  var target = $("#ops");
+  var timeout = null;
+  var updater = function(target) {
+    if(timeout)
+      clearTimeout(timeout);
 
-  target.html("processing...")
+    var target = $("#ops");
+    if(!target || target.length == 0)
+      return;
 
-  var updater = function() {
     $.ajax({url: "/ops.json", type: "GET", dataType: "json", success: function(data) {
         var html = "";
         for(var prop in data) {
@@ -13,8 +17,23 @@ $(document).ready(function() {
         target.html(html);
       }
     });
-    setTimeout(updater, 5000);
-  }
+    timeout = setTimeout(updater, 1500);
+  };
 
-  updater();
-})
+  $('div[data-role*="page"]').live('pagehide',function(event, ui) {
+    if(timeout)
+      clearTimeout(timeout);
+  });
+
+  $('div[data-role*="page"]').live('pageshow',function(event, ui) {
+    var page = $(event.target);
+    var target = page.find("#ops");
+
+    if(page.hasClass("status_page") && target.length > 0) {
+      target.html("processing...");
+      updater(target);
+    } else if(timeout) {
+      clearTimeout(timeout);
+    }
+  });
+});

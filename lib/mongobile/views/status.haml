@@ -5,9 +5,7 @@
 -mem = status.delete("mem")
 -ops = status.delete("opcounters")
 
-%script(src="/javascripts/status.js")
-
-%div(data-role="page")
+%div.status_page(data-role="page")
   %div(data-role="header")
     %h1
       Server Status
