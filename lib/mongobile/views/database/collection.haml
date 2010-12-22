@@ -22,7 +22,10 @@
         %br
     %h1
       Documents
-    -document_list(@collection).each do |document|
+    %form(action="/database/#{@database.name}/#{@collection.name}/filter" method="post" style="display: inline")
+      %input(type="text" name="q" value="#{params[:q] || "{}"}" data-inline="true" )
+      %input(type="submit" data-role="button" data-inline="true" value="filter")
+    -@documents.each do |document|
       -count+=1
       %div(data-role="collapsible" data-collapsed=true)
         %h1

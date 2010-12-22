@@ -37,8 +37,8 @@ module Mongobile
       options
     end
 
-    def document_list(collection)
-      collection.find({}, query_options)
+    def document_list(collection, query = {})
+      collection.find(query, query_options)
     end
 
     def file_size(database)

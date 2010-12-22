@@ -1,4 +1,7 @@
 require 'rubygems'
+
+require 'json'
+
 require 'bundler'
 require 'bundler/setup'
 

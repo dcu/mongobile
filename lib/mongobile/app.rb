@@ -31,12 +31,46 @@ module Mongobile
     get "/database/:id/:collection" do
       @database = db(params[:id])
       @collection = @database.collection(params[:collection])
+      @documents = document_list(@collection)
       haml :"database/collection"
     end
 
     put "/database/:id/:collection" do
       db.create_collection(params[:collection])
       status 201
+    end
+
+    post "/database/:id/:collection/filter" do
+      @database = db(params[:id])
+      @collection = @database.collection(params[:collection])
+
+      query = nil
+      begin
+        query = JSON.parse(params[:q])
+        params[:q] = query.to_json
+      rescue => e
+        Timeout.timeout(2) do
+          begin
+            Thread.start do
+              $SAFE=4
+              query = Object.module_eval(params[:q])
+            end.join
+          rescue Exception => e
+            puts e.message
+            query = {}
+          ensure
+            params[:q] = query.inspect
+          end
+        end
+      ensure
+        query ||= {}
+      end
+
+      puts "Processing query: #{query.inspect}"
+
+      @documents = document_list(@collection, query)
+
+      haml :"database/collection"
     end
 
     post "/database/:id/:collection/delete" do
