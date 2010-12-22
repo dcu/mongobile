@@ -1,6 +1,11 @@
 = mongobile
 
-Description goes here.
+admin ui for mongodb which can be used from mobile devices
+
+= local install
+
+$ gem install mongobile
+$ mongobile
 
 == Contributing to mongobile
  
