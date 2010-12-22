@@ -1,6 +1,8 @@
 require 'rubygems'
+require 'bundler'
 require 'bundler/setup'
 
+require 'benchmark'
 require 'sinatra'
 require 'haml'
 require 'bson'

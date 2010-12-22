@@ -2,6 +2,8 @@
   %div(data-role="header")
     %h1
       Databases
+    %a(href="/status" class="ui-btn-right")
+      Status
   %div(data-role="content")
     %ul(data-role="listview" data-filter="true")
       -@databases.each do |database|

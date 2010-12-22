@@ -18,6 +18,10 @@ module Mongobile
       haml :index
     end
 
+    get "/status" do
+      haml :status
+    end
+
     get "/database/:id" do
       @database = db(params[:id])
       @collections = @database.collections

@@ -26,7 +26,7 @@
       -count+=1
       %div(data-role="collapsible" data-collapsed=true)
         %h1
-          &= document["_id"] +" "+ (document["name"] || document["title"] || document["description"] || document["message"] || "")
+          &= document["_id"] +"#{humanize(document["name"] || document["title"] || document["description"])}"
         -document.each do |k,v|
           %b
             &="#{k}="
