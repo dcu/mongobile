@@ -22,6 +22,12 @@ module Mongobile
       haml :status
     end
 
+    get "/ops.json" do
+      content_type "application/json"
+      status 200
+      ops_per_second.to_json
+    end
+
     get "/database/:id" do
       @database = db(params[:id])
       @collections = @database.collections

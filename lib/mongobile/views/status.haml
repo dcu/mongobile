@@ -5,6 +5,8 @@
 -mem = status.delete("mem")
 -ops = status.delete("opcounters")
 
+%script(src="/javascripts/status.js")
+
 %div(data-role="page")
   %div(data-role="header")
     %h1
@@ -22,11 +24,7 @@
     %div(data-role="collapsible" data-collapsed=true)
       %h1
         Operations Per Second
-      -ops_per_second.each do |k, v|
-        %b
-          &="#{k}="
-        &=humanize v
-        %br
+      #ops
 
     %div(data-role="collapsible" data-collapsed=true)
       %h1
@@ -73,3 +71,4 @@
 
 
   %div(data-role="footer")
+
