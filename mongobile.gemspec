@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mongobile}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David A. Cuadrado"]
-  s.date = %q{2010-12-21}
+  s.date = %q{2010-12-22}
   s.default_executable = %q{mongobile}
   s.description = %q{admin ui for mongodb based on jquery mobile}
   s.email = %q{krawek@gmail.com}
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/mongobile/views/database/show.haml",
     "lib/mongobile/views/index.haml",
     "lib/mongobile/views/layout.haml",
+    "lib/mongobile/views/status.haml",
     "mongobile.gemspec",
     "public/javascripts/application.js",
     "public/javascripts/jquery.mobile-1.0a3pre.min.js",
