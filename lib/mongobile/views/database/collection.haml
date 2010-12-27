@@ -29,12 +29,8 @@
       -count+=1
       %div(data-role="collapsible" data-collapsed=true)
         %h1
-          &= document["_id"] +" #{humanize(document["name"] || document["title"] || document["subject"] || document["_type"])}"
-        -document.each do |k,v|
-          %b
-            &="#{k}="
-          &=humanize v
-          %br
+          &= document["_id"] +" #{humanize(document["name"] || document["title"] || document["subject"] || document["_type"], false)}"
+        =haml :"shared/values", :layout => false, :locals => {:hash => document}
 
   %div(data-role="footer")
     -if skip > 0

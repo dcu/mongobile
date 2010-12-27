@@ -99,13 +99,17 @@ module Mongobile
       redirect "/database/#{params[:id]}"
     end
 
-    def humanize(v)
-      if v.kind_of?(Hash)
-        v.inspect
+    def humanize(v, quote = true)
+      if v.nil? && quote
+        "null"
+      elsif v.kind_of?(Hash)
+        v.to_json
       elsif v.kind_of?(Array)
-        v.inspect
+        v.to_json
       elsif v.kind_of?(Time)
-        v.strftime("%d %B %Y %H:%M:%S")
+        v.strftime("%d %B %Y %H:%M:%S").inspect
+      elsif quote
+        v.inspect
       else
         v
       end
