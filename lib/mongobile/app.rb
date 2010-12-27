@@ -103,9 +103,9 @@ module Mongobile
       if v.nil? && quote
         "null"
       elsif v.kind_of?(Hash)
-        v.to_json
+        JSON.pretty_generate(v)
       elsif v.kind_of?(Array)
-        v.to_json
+        JSON.pretty_generate(v)
       elsif v.kind_of?(Time)
         v.strftime("%d %B %Y %H:%M:%S").inspect
       elsif quote
