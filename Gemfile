@@ -1,5 +1,9 @@
 source "http://rubygems.org"
 
+if RUBY_VERSION < '1.9.0'
+  gem 'json'
+end
+
 gem 'sinatra', '~> 1.1.0'
 gem 'bson', '~> 1.1.4'
 gem 'mongo', '~> 1.1.4'
